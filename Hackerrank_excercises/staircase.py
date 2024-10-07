@@ -6,6 +6,6 @@ def staircase(n):
         #i+=1
         #print( i * "#")
 
-n = 6
+n = 7
 
 staircase(n)
