@@ -1,4 +1,4 @@
 prepare
 clean
-cookClean
+cook
 Clean

@@ -1,0 +1,14 @@
+# Define the initial list of user entries as strings
+user_entries = ['10', '19.1', '20']
+
+# entries_sum = 0
+# for i in user_entries:
+#     i = float(i)
+#     entries_sum += i
+# print(entries_sum)
+
+# Use list comprehension to convert each item to a float
+user_numbers = [float(item) for item in user_entries]
+
+# Print the sum of the numbers
+print(sum(user_numbers))
