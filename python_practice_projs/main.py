@@ -8,19 +8,18 @@ while True:
         case 'add':
             todo = input("Enter a ToDo: ") + "\n"
 
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
-            
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
             todos.append(todo)
-            file = open("todos.txt", "w")
-            file.writelines(todos)
-            file.close()
-            continue
+
+            with open("todos.txt", "w") as file:
+                file.writelines(todos)
+
         case 'show':
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
             # Remove the blank space for each item
             # METHOD 1: Loop
@@ -33,22 +32,38 @@ while True:
             # METHOD 2: List comprehension
             # Need to change enumerate(new_todos) to only "todos"
             # new_todos = [item.strip('\n') for item in todos]
-
             
             for index,item in enumerate(todos):
-            #Method 3: modifying item directly to remove blank space here:
+            # Method 3: modifying item directly to remove blank space here:
                 item = item.strip('\n')
                 row = f"{index + 1}-{item}"
                 print(row)
         case 'edit':
             n = int(input("Number of ToDo to edit: "))
             n -= 1
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
             new_todo = input("Enter new todo: ")
-            todos[n] = new_todo
+            todos[n] = new_todo + '\n'
+            with open("todos.txt", "w") as file:
+                file.writelines(todos)
+
         case 'complete':
             n = int(input("Number of the todo to complete: "))
-            n-=1
-            todos.pop(n)
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+            n -= 1
+            # todo_to_remove = todos[n].strip('\n')
+            # todos.pop(n)
+            
+            todo_to_remove = todos.pop(n).strip('\n')
+
+            with open("todos.txt", "w") as file:
+                file.writelines(todos)
+            
+            print(f"Todo {todo_to_remove} was removed from the list.")
+
         case 'exit':
             break
         case err:
