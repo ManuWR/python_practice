@@ -1,5 +1,5 @@
 Fix
-Wash
+Clean
 Greet
 Reach
 car
@@ -7,4 +7,7 @@ car
 
 Buy groceries
 
-
+Buy a car
+add a member
+clean
+ add
