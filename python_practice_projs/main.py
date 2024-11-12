@@ -1,4 +1,9 @@
-# i = False
+def get_todos():
+    with open('todos.txt', 'r') as file:
+        todos = file.readlines()
+    return todos
+
+
 while True:
     # Get user input and strip space chars from it
     user_action = input("Type add, show, edit, complete or exit: ")
@@ -7,9 +12,7 @@ while True:
     if user_action.startswith(("add","new")):
         todo = user_action[4:]
 
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
-
+        todos = get_todos()
         todos.append(todo + '\n')
 
         with open("todos.txt", "w") as file:
@@ -18,8 +21,7 @@ while True:
 
     elif user_action.startswith("show"):
 
-        with open('todos.txt', 'r') as file:
-            todos = file.readlines()
+        todos = get_todos()
 
         # Remove the blank space for each item
         # METHOD 1: Loop
@@ -42,8 +44,7 @@ while True:
         try:
             n = int(user_action[5:])
             n -= 1
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+            todos = get_todos()
 
             new_todo = input("Enter new todo: ")
             todos[n] = new_todo + '\n'
@@ -56,8 +57,8 @@ while True:
     elif user_action.startswith("complete"):
         try:
             n = int(user_action[9:])
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+            todos = get_todos()
+            
             n -= 1
             # todo_to_remove = todos[n].strip('\n')
             # todos.pop(n)
