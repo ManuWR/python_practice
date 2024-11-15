@@ -1,7 +1,23 @@
-def get_todos():
-    with open('todos.txt', 'r') as file:
-        todos = file.readlines()
-    return todos
+def get_todos(filepath="todos.txt"):
+    """ Read a text file and return the list of 
+    to-do items
+    """
+    with open(filepath, 'r') as file:
+        todos_local = file.readlines()
+    return todos_local
+
+
+def write_todos(todos_arg, filepath="todos.txt"):
+    """ Write the to-do items list in the text file. """
+    with open(filepath, "w") as file:
+        file.writelines(todos_arg)
+
+text = """
+Principles of productivity:\n
+Managing your inflow.
+Systemizing everything that repeats.
+"""
+print(text)
 
 
 while True:
@@ -15,13 +31,11 @@ while True:
         todos = get_todos()
         todos.append(todo + '\n')
 
-        with open("todos.txt", "w") as file:
-            file.writelines(todos)
-        # continue
+        write_todos(todos)
 
     elif user_action.startswith("show"):
 
-        todos = get_todos()
+        todos = get_todos("todos.txt")
 
         # Remove the blank space for each item
         # METHOD 1: Loop
@@ -48,8 +62,7 @@ while True:
 
             new_todo = input("Enter new todo: ")
             todos[n] = new_todo + '\n'
-            with open("todos.txt", "w") as file:
-                file.writelines(todos)
+            write_todos(todos)
         except ValueError:
             print("Your command is not valid.")
             continue
@@ -64,8 +77,7 @@ while True:
             # todos.pop(n)
             todo_to_remove = todos.pop(n).strip('\n')
 
-            with open("todos.txt", "w") as file:
-                file.writelines(todos)
+            write_todos(todos)
             
             print(f"Todo {todo_to_remove} was removed from the list.")
         except IndexError:

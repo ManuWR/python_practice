@@ -3,12 +3,9 @@ Clean
 Greet
 Reach
 car
-
-
-Buy groceries
-
-Buy a car
-add a member
 clean
  add
 Make rice
+Clean code
+Buy groceries
+we made a default arg
