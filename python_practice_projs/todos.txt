@@ -1,9 +1,6 @@
 Fix
 Clean
-Greet
-Reach
-car
-clean
+Buy stuffclean
  add
 Make rice
 Clean code
@@ -11,3 +8,4 @@ Buy groceries
 we made a default arg
 adding
 study python
+Last todo
