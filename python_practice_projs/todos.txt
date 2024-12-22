@@ -1,7 +1,6 @@
 Fix
 Clean
 Buy stuffclean
- add
 Make rice
 Clean code
 Buy groceries
